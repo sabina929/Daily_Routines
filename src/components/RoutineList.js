@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import RoutineItem from './RoutineItem'
+import { StyledRoutineList } from '../styles/StyledRoutineList';
 
 class RoutineList extends Component {
     render() {
         return (
-            <ul>
+            <StyledRoutineList>
                 <RoutineItem/>
-            </ul>
+            </StyledRoutineList>
         )
     }
 }

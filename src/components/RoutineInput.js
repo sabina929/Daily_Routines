@@ -3,15 +3,16 @@ import {StyledRoutineInput} from '../styles/StyledRoutineInput'
 
 class RoutineInput extends Component {
     render() {
+        const {item, handleChange, handleSubmit} = this.props;
         return (
-            <StyledRoutineInput>
-                <input type="text" placeholder="enter smth..." name="task" required></input>
+            <StyledRoutineInput onSubmit={handleSubmit}>
+                <input type="text" placeholder="enter smth..." name="task" required onChange={handleChange} value={item}></input>
                 <div className="add-uncheck">
                     <div className="add-button">
                         <input type="submit" value="+"></input>
                     </div>
                     <div className="uncheck-button">
-                        <i class="fas fa-sync-alt"></i>
+                        <i className="fas fa-sync-alt"></i>
                     </div>
                 </div>
             </StyledRoutineInput>

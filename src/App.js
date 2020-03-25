@@ -13,7 +13,35 @@ class App extends Component {
   }
 
 
+  handleChange = e => {
+    this.setState({
+      item: e.target.value
+    })
+  }
 
+// ADD ITEM TO THE LIST
+handleSubmit = e => {
+  e.preventDefault();
+
+  const newItem = {
+    id: this.state.id,
+    title: this.state.item
+  }
+
+  console.log(newItem);
+  
+  const updatedItems = [...this.state.items, newItem];
+  
+  this.setState({
+    items: updatedItems,
+    item: '',
+    id: uuidv4(),
+    edit: false
+  }, () => {
+    console.log(this.state);
+  })
+  
+}
 
   render() {
 
@@ -22,7 +50,7 @@ class App extends Component {
              <h1 className="App-header">
               Daily Routines
              </h1>
-             <Routines/>
+             <Routines handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item}/>
       </>
 
       );

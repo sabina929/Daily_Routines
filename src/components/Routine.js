@@ -6,6 +6,7 @@ import RoutineList from './RoutineList'
 
 class Routine extends Component {
     render() {
+        const {item, handleChange, handleSubmit} = this.props;
         return (
             <StyledRoutine>
                <div style={{
@@ -29,8 +30,8 @@ class Routine extends Component {
                     width: "100%",
                     padding: "12px"
                }}>
-               <RoutineInput/>
-               <RoutineList/>
+                    <RoutineInput handleChange={handleChange} handleSubmit={handleSubmit} item={item}/>
+                    <RoutineList/>
                </div>
                    
 
