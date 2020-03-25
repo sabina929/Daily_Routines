@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import {StyledRoutine} from '../styles/StyledRoutine';
 
+import RoutineInput from './RoutineInput'
+import RoutineList from './RoutineList'
+
 class Routine extends Component {
     render() {
         return (
@@ -21,6 +24,17 @@ class Routine extends Component {
                }}>
                     <h2>Routine</h2>
                </div>
+
+               <div style={{
+                    width: "100%",
+                    padding: "12px"
+               }}>
+               <RoutineInput/>
+               <RoutineList/>
+               </div>
+                   
+
+
             </StyledRoutine>
         )
     }
