@@ -4,9 +4,17 @@ import { StyledRoutineList } from '../styles/StyledRoutineList';
 
 class RoutineList extends Component {
     render() {
+        const {items} = this.props;
         return (
             <StyledRoutineList>
-                <RoutineItem/>
+                {/* <RoutineItem items={items}/> */}
+                {
+                    items.map(item => {
+                        return (
+                            <RoutineItem key={item.id} title={item.title}/>
+                        )
+                    })
+                }
             </StyledRoutineList>
         )
     }

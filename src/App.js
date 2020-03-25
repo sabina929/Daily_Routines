@@ -50,7 +50,7 @@ handleSubmit = e => {
              <h1 className="App-header">
               Daily Routines
              </h1>
-             <Routines handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item}/>
+             <Routines items={this.state.items} handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item}/>
       </>
 
       );
