@@ -91,15 +91,21 @@ class App extends Component {
   }
 
 checkToggle = id => {
+  let tempItems = [...this.state.items];
   const selectedItem = this.state.items.find(item => item.id === id);
   // console.log(selectedItem)
+  const index = tempItems.indexOf(selectedItem);
+      // console.log(index)
+  const item = tempItems[index];
 
-  selectedItem.isChecked = !selectedItem.isChecked;
+  item.isChecked = !item.isChecked;
   // console.log(selectedItem)
+  const tempItems2 = [...tempItems, item];
+
+  tempItems2.splice(-1, 1);
 
   this.setState({
-    id,
-    isChecked: selectedItem.isChecked,
+    items: tempItems2
   })
 }
 
@@ -134,6 +140,25 @@ removeItem = id => {
   })
 }
 
+unCheckAll = () => {
+  // console.log(this.state.items)
+  const uncheckedItems = this.state.items.map(item => item.isChecked = false);
+  const tempItems = [...this.state.items]
+  // console.log(uncheckedItems)
+  // console.log(tempItems)
+  this.setState({
+    items: tempItems
+  }, () => {
+
+    console.log(this.state)
+  })
+}
+
+componentDidMount() {
+
+  console.log(this.state)
+}
+
   render() {
 
     return (
@@ -141,7 +166,7 @@ removeItem = id => {
              <h1 className="App-header">
               Daily Routines
              </h1>
-             <Routines items={this.state.items} handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item} checkToggle={this.checkToggle} removeItem={this.removeItem} editItem={this.editItem}/>
+             <Routines items={this.state.items} handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item} checkToggle={this.checkToggle} removeItem={this.removeItem} editItem={this.editItem} unCheckAll={this.unCheckAll}/>
       </>
 
       );

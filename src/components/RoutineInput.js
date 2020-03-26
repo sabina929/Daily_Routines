@@ -3,7 +3,7 @@ import {StyledRoutineInput} from '../styles/StyledRoutineInput'
 
 class RoutineInput extends Component {
     render() {
-        const {item, handleChange, handleSubmit} = this.props;
+        const {item, handleChange, handleSubmit, unCheckAll} = this.props;
         return (
             <StyledRoutineInput onSubmit={handleSubmit}>
                 <input type="text" placeholder="enter smth..." name="task" required onChange={handleChange} value={item}></input>
@@ -12,7 +12,7 @@ class RoutineInput extends Component {
                         <input type="submit" value="+"></input>
                     </div>
                     <div className="uncheck-button">
-                        <i className="fas fa-sync-alt"></i>
+                        <i className="fas fa-sync-alt" onClick={unCheckAll}></i>
                     </div>
                 </div>
             </StyledRoutineInput>

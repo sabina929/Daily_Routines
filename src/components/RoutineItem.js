@@ -3,7 +3,7 @@ import { StyledRoutineItem } from '../styles/StyledRoutineItem';
 
 class RoutineItem extends Component {
     render() {
-        const {title, isChecked, checkToggle, removeItem, id, editItem } = this.props
+        const {title, isChecked, checkToggle, removeItem, editItem } = this.props
         return (
             <>
             <StyledRoutineItem>
