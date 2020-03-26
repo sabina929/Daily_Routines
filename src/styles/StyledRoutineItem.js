@@ -51,7 +51,6 @@ export const StyledRoutineItem = styled.ul`
 
             input {
                 display: none;
-                // visibility: hidden;
             }
 
     }
@@ -72,7 +71,7 @@ export const StyledRoutineItem = styled.ul`
             transition: all .2s ease;
 
             &:active{
-                transform: scale(.2);
+                transform: scale(.6);
             }
         }
         p{

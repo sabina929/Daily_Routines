@@ -3,7 +3,7 @@ import { StyledRoutineItem } from '../styles/StyledRoutineItem';
 
 class RoutineItem extends Component {
     render() {
-        const {title, isChecked, checkToggle} = this.props
+        const {title, isChecked, checkToggle, removeItem, id, editItem } = this.props
         return (
             <>
             <StyledRoutineItem>
@@ -18,8 +18,8 @@ class RoutineItem extends Component {
                     </label> 
                 </div> 
                 <div className="edit-remove">
-                    <i className="fas fa-pencil-alt"></i>
-                    <i className="fas fa-trash"></i>
+                    <i className="fas fa-pencil-alt" onClick={editItem}></i>
+                    <i className="fas fa-trash" onClick={removeItem}></i>
                 </div>    
             </StyledRoutineItem>
             {/* <StyledRoutineItem>

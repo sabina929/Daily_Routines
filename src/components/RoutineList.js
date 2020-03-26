@@ -4,14 +4,14 @@ import { StyledRoutineList } from '../styles/StyledRoutineList';
 
 class RoutineList extends Component {
     render() {
-        const {items, checkToggle} = this.props;
+        const {items, checkToggle, removeItem, editItem} = this.props;
         return (
             <StyledRoutineList>
                 {/* <RoutineItem items={items}/> */}
                 {
                     items.map(item => {
                         return (
-                            <RoutineItem key={item.id} title={item.title} isChecked={item.isChecked} checkToggle={() => checkToggle(item.id)}/>
+                            <RoutineItem key={item.id} title={item.title} isChecked={item.isChecked} checkToggle={() => checkToggle(item.id)} removeItem={() => removeItem(item.id)} id={item.id} editItem={() => editItem(item.id)}/>
                         )
                     })
                 }

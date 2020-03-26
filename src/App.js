@@ -29,18 +29,59 @@ class App extends Component {
       isChecked: false
     }
 
-    console.log(newItem);
+    // console.log(newItem);
     
     const updatedItems = [...this.state.items, newItem];
     
-    this.setState({
-      items: updatedItems,
-      item: '',
-      id: uuidv4(),
-      editItem: false
-    }, () => {
-      console.log(this.state);
-    })
+    // this.setState({
+    //   items: updatedItems,
+    //   item: '',
+    //   id: uuidv4(),
+    //   editItem: false
+    // }, () => {
+    //   console.log(this.state);
+    // })
+
+
+    if (!this.state.editItem) {
+      this.setState(() => {
+        return {
+          items: updatedItems,
+          item: '',
+          id: uuidv4(),
+          // editItem: false
+        }
+      }
+      )
+    }
+
+    if (this.state.editItem) {
+
+      let tempItems = [...this.state.items];
+      const selectedItem = this.state.items.find(item => item.id === this.state.id);
+      // console.log(selectedBook)
+      const index = tempItems.indexOf(selectedItem);
+      // console.log(index)
+      const item = tempItems[index];
+
+      item.title = this.state.item;
+
+      const editedItems = [...tempItems, item];
+
+      editedItems.splice(-1, 1);
+
+      this.setState(() => {
+        return {
+          books: editedItems,
+          id: uuidv4(),
+          item: '',
+          editItem: false
+        }
+      }, () => {
+        console.log(this.state);
+      }
+      )
+    }
     
   }
   clearList = () => {
@@ -50,33 +91,48 @@ class App extends Component {
   }
 
 checkToggle = id => {
-
   const selectedItem = this.state.items.find(item => item.id === id);
-  console.log(selectedItem)
-  
-    selectedItem.isChecked = !selectedItem.isChecked;
-    // console.log(selectedItem)
+  // console.log(selectedItem)
 
-    this.setState({
-      id,
-      isChecked: selectedItem.isChecked,
-    })
-  
+  selectedItem.isChecked = !selectedItem.isChecked;
+  // console.log(selectedItem)
+
+  this.setState({
+    id,
+    isChecked: selectedItem.isChecked,
+  })
 }
 
-// editItem = id => {
-//   const filteredItems = this.state.items.filter(item => item.id !== id);
+editItem = id => {
+  // const filteredItems = this.state.items.filter(item => item.id !== id);
+  const selectedItem = this.state.items.find(item => item.id === id);
 
-//   const selectedItem = this.state.items.find(item => item.id === id);
+  if(!this.state.editItem) {
+    this.setState({
+      id,
+      item: selectedItem.title,
+      editItem: true
+    })
+    
+  } else if(this.state.editItem) {
+      this.setState({
+        id: uuidv4(),
+        item: '',
+        editItem: false
+      })
 
-//   this.setState({
-//     items: filteredItems,
-//     item: selectedItem.title,
-//     id,
-//     edit: true
+  }
+}
+removeItem = id => {
+  const filteredItems = this.state.items.filter(item => item.id !== id);
 
-//   })
-// }
+  this.setState({
+    items: filteredItems,
+    item: '',
+    id: uuidv4(),
+    editItem: false
+  })
+}
 
   render() {
 
@@ -85,7 +141,7 @@ checkToggle = id => {
              <h1 className="App-header">
               Daily Routines
              </h1>
-             <Routines items={this.state.items} handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item} checkToggle={this.checkToggle}/>
+             <Routines items={this.state.items} handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item} checkToggle={this.checkToggle} removeItem={this.removeItem} editItem={this.editItem}/>
       </>
 
       );
