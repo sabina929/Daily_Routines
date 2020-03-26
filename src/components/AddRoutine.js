@@ -4,8 +4,10 @@ import  {StyledAddRoutine} from '../styles/StyledAddRoutine'
 
 class AddRoutine extends Component {
     render() {
+
+        const {addRoutine} = this.props;
         return (
-            <StyledAddRoutine>
+            <StyledAddRoutine onClick={addRoutine}>
                 +
             </StyledAddRoutine>
         )

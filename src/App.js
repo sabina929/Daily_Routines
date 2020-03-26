@@ -6,12 +6,28 @@ import Routines from './components/Routines'
 
 class App extends Component {
   state = {
+    routines:[],
     items: [],
     id: uuidv4(),
     item: '',
     editItem: false
   }
 
+  addRoutine = () => {
+
+    const newRoutine = {
+      id: uuidv4(),
+      name: "Routine"
+    }
+
+    const updatedRoutines = [...this.state.routines, newRoutine];
+
+     this.setState({
+      routines:updatedRoutines
+    }, () => {
+      console.log(this.state);
+    })
+  }
 
   handleChange = e => {
     this.setState({
@@ -150,7 +166,7 @@ unCheckAll = () => {
     items: tempItems
   }, () => {
 
-    console.log(this.state)
+    // console.log(this.state)
   })
 }
 
@@ -166,7 +182,7 @@ componentDidMount() {
              <h1 className="App-header">
               Daily Routines
              </h1>
-             <Routines items={this.state.items} handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item} checkToggle={this.checkToggle} removeItem={this.removeItem} editItem={this.editItem} unCheckAll={this.unCheckAll}/>
+             <Routines routines={this.state.routines} items={this.state.items} handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item} checkToggle={this.checkToggle} removeItem={this.removeItem} editItem={this.editItem} unCheckAll={this.unCheckAll} addRoutine={this.addRoutine}/>
       </>
 
       );
