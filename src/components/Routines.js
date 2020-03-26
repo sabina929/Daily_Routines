@@ -7,11 +7,11 @@ import AddRoutine from './AddRoutine'
 class Routines extends Component {
     
     render() {
-        const {items, item, handleChange, handleSubmit} = this.props;
+        const {items, item, handleChange, handleSubmit, checkToggle} = this.props;
 
         return (
             <StyledRoutines>
-                <Routine items={items} handleChange={handleChange} handleSubmit={handleSubmit} item={item}/>
+                <Routine items={items} handleChange={handleChange} handleSubmit={handleSubmit} item={item} checkToggle={checkToggle} />
                 <AddRoutine/>
             </StyledRoutines>
         )

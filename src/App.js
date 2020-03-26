@@ -19,29 +19,64 @@ class App extends Component {
     })
   }
 
-// ADD ITEM TO THE LIST
-handleSubmit = e => {
-  e.preventDefault();
+  // ADD ITEM TO THE LIST
+  handleSubmit = e => {
+    e.preventDefault();
 
-  const newItem = {
-    id: this.state.id,
-    title: this.state.item
+    const newItem = {
+      id: this.state.id,
+      title: this.state.item,
+      isChecked: false
+    }
+
+    console.log(newItem);
+    
+    const updatedItems = [...this.state.items, newItem];
+    
+    this.setState({
+      items: updatedItems,
+      item: '',
+      id: uuidv4(),
+      editItem: false
+    }, () => {
+      console.log(this.state);
+    })
+    
+  }
+  clearList = () => {
+    this.setState({
+      items: []
+    })
   }
 
-  console.log(newItem);
+checkToggle = id => {
+
+  const selectedItem = this.state.items.find(item => item.id === id);
+  console.log(selectedItem)
   
-  const updatedItems = [...this.state.items, newItem];
-  
-  this.setState({
-    items: updatedItems,
-    item: '',
-    id: uuidv4(),
-    edit: false
-  }, () => {
-    console.log(this.state);
-  })
+    selectedItem.isChecked = !selectedItem.isChecked;
+    // console.log(selectedItem)
+
+    this.setState({
+      id,
+      isChecked: selectedItem.isChecked,
+    })
   
 }
+
+// editItem = id => {
+//   const filteredItems = this.state.items.filter(item => item.id !== id);
+
+//   const selectedItem = this.state.items.find(item => item.id === id);
+
+//   this.setState({
+//     items: filteredItems,
+//     item: selectedItem.title,
+//     id,
+//     edit: true
+
+//   })
+// }
 
   render() {
 
@@ -50,7 +85,7 @@ handleSubmit = e => {
              <h1 className="App-header">
               Daily Routines
              </h1>
-             <Routines items={this.state.items} handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item}/>
+             <Routines items={this.state.items} handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item} checkToggle={this.checkToggle}/>
       </>
 
       );

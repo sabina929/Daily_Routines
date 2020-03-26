@@ -51,6 +51,7 @@ export const StyledRoutineItem = styled.ul`
 
             input {
                 display: none;
+                // visibility: hidden;
             }
 
     }
