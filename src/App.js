@@ -74,6 +74,8 @@ class App extends Component {
           id: uuidv4(),
           // editItem: false
         }
+      }, () => {
+        localStorage.setItem("localItems", JSON.stringify(this.state));
       }
       )
     }
@@ -101,7 +103,8 @@ class App extends Component {
           editItem: false
         }
       }, () => {
-        console.log(this.state);
+        // console.log(this.state);
+        localStorage.setItem("localItems", JSON.stringify(this.state));
       }
       )
     }
@@ -132,6 +135,8 @@ checkToggle = id => {
 
   this.setState({
     items: tempItems2
+  }, () => {
+    localStorage.setItem("localItems", JSON.stringify(this.state));
   })
 }
 
@@ -145,6 +150,8 @@ editItem = id => {
       id,
       item: selectedItem.title,
       editItem: true
+    }, () => {
+      localStorage.setItem("localItems", JSON.stringify(this.state));
     })
     
   } else if(this.state.editItem) {
@@ -152,6 +159,8 @@ editItem = id => {
         id: uuidv4(),
         item: '',
         editItem: false
+      },()=>{
+        localStorage.setItem("localItems", JSON.stringify(this.state));
       })
 
   }
@@ -166,6 +175,8 @@ removeItem = id => {
     item: '',
     id: uuidv4(),
     editItem: false
+  }, () => {
+    localStorage.setItem("localItems", JSON.stringify(this.state));
   })
 }
 
@@ -181,12 +192,20 @@ unCheckAll = () => {
   }, () => {
 
     // console.log(this.state)
+    localStorage.setItem("localItems", JSON.stringify(this.state));
   })
 }
 
 componentDidMount() {
 
-  console.log(this.state)
+  // console.log(this.state)
+    
+    // const  localItems  = JSON.parse(localStorage.localItems);
+
+    if (localStorage.localItems) {
+      this.setState(JSON.parse(localStorage.localItems));
+    } 
+  
 }
 
   render() {
