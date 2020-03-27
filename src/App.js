@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import './App.css';
 import Routines from './components/Routines'
 
+import {GlobalStyle} from './styles/GlobalStyle'
 
 class App extends Component {
   state = {
@@ -216,6 +216,7 @@ componentDidMount() {
               Daily Routines
              </h1>
              <Routines routines={this.state.routines} items={this.state.items} handleChange={this.handleChange} handleSubmit={this.handleSubmit} item={this.state.item} checkToggle={this.checkToggle} removeItem={this.removeItem} editItem={this.editItem} unCheckAll={this.unCheckAll} addRoutine={this.addRoutine}/>
+             <GlobalStyle/>
       </>
 
       );
