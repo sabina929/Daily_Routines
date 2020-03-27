@@ -10,19 +10,21 @@ class Routines extends Component {
         const {addRoutine, routines, items, item, handleChange, handleSubmit, checkToggle, removeItem, editItem, unCheckAll} = this.props;
 
         return (
+            <>
             <StyledRoutines>
-                {/* {
+                {
                     routines.map(routine => {
                         return(
 
-                            <Routine key={routine.id} name={routine.name}/>
+                            <Routine key={routine.id} name={routine.name} items={items} handleChange={handleChange} handleSubmit={handleSubmit} item={item} checkToggle={checkToggle} removeItem={removeItem} editItem={editItem} unCheckAll={unCheckAll}/>
                         )
                     })
-                } */}
+                }
                 <Routine items={items} handleChange={handleChange} handleSubmit={handleSubmit} item={item} checkToggle={checkToggle} removeItem={removeItem} editItem={editItem} unCheckAll={unCheckAll}/>
                 
-                <AddRoutine addRoutine={addRoutine}/>
             </StyledRoutines>
+            <AddRoutine addRoutine={addRoutine}/>
+            </>
         )
     }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {StyledRoutineInput} from '../styles/StyledRoutineInput'
 
 class RoutineInput extends Component {
+
     render() {
         const {item, handleChange, handleSubmit, unCheckAll} = this.props;
         return (

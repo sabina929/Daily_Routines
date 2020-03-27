@@ -17,7 +17,13 @@ class App extends Component {
 
     const newRoutine = {
       id: uuidv4(),
-      name: "Routine"
+      name: "Routine",
+      content: {
+        items: [],
+        id: uuidv4(),
+        item: '',
+        editItem: false
+      }
     }
 
     const updatedRoutines = [...this.state.routines, newRoutine];
@@ -29,6 +35,7 @@ class App extends Component {
     })
   }
 
+  // HANDLE CHANGE
   handleChange = e => {
     this.setState({
       item: e.target.value
@@ -100,12 +107,15 @@ class App extends Component {
     }
     
   }
+
+  // CLEAR LIST
   clearList = () => {
     this.setState({
       items: []
     })
   }
 
+// CHECK/UNCHECK
 checkToggle = id => {
   let tempItems = [...this.state.items];
   const selectedItem = this.state.items.find(item => item.id === id);
@@ -125,6 +135,7 @@ checkToggle = id => {
   })
 }
 
+// EDIT ITEM
 editItem = id => {
   // const filteredItems = this.state.items.filter(item => item.id !== id);
   const selectedItem = this.state.items.find(item => item.id === id);
@@ -145,6 +156,8 @@ editItem = id => {
 
   }
 }
+
+// REMOVE ITEM
 removeItem = id => {
   const filteredItems = this.state.items.filter(item => item.id !== id);
 
@@ -156,6 +169,7 @@ removeItem = id => {
   })
 }
 
+// UNCHECK ALL
 unCheckAll = () => {
   // console.log(this.state.items)
   const uncheckedItems = this.state.items.map(item => item.isChecked = false);
