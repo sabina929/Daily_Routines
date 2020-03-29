@@ -220,5 +220,5 @@ componentDidMount() {
         )
     }
 }
-// export default  HigherOrderComp(Routine)
+// export default  higherOrderComp(Routine)
 export default  Routine

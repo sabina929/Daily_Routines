@@ -1,7 +1,7 @@
 import React from 'react'
 
-const HigherOrderComp = OriginalComponent => {
-    class NewComponent extends React.Component {
+const higherOrderComp = OriginalComponent => {
+    class HigherOrderComp extends React.Component {
         constructor(props) {
             super(props)
         
@@ -77,8 +77,8 @@ const HigherOrderComp = OriginalComponent => {
     )}
     }
 
-    return NewComponent;
+    return HigherOrderComp;
 }
 
-export default HigherOrderComp
+export default higherOrderComp
 
