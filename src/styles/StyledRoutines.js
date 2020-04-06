@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
-export const StyledRoutines = styled.div`
-    
+export const StyledRoutines = styled.div` 
     display: grid;
     grid-template-columns: auto;
     grid-template-rows: 100%;

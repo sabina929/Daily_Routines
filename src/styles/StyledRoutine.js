@@ -9,5 +9,4 @@ export const StyledRoutine = styled.div`
     border-radius: 8px;
     margin: 0 24px 0 24px;
     // border: 1px solid red;
-
 `;
